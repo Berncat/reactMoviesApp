@@ -32,9 +32,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const MovieDetails = ( props) => {
+const MovieDetails = (props) => {
   const classes = useStyles();
-  const movie = props.movie
+  const movie = props.movie;
 
   return (
     <>
@@ -46,30 +46,48 @@ const MovieDetails = ( props) => {
         {movie.overview}
       </Typography>
       <div className={classes.chipRoot}>
-      <Paper component="ul" className={classes.chipSet}>
-        <li>
-          <Chip label="Genres" className={classes.chipLabel} color="primary" />
-        </li>
-        {movie.genres.map((g) => (
-          <li key={g.name}>
-            <Chip label={g.name} className={classes.chip} />
+        <Paper component="ul" className={classes.chipSet}>
+          <li>
+            <Chip
+              label="Genres"
+              className={classes.chipLabel}
+              color="primary"
+            />
           </li>
-        ))}
-      </Paper>
-      <Paper component="ul" className={classes.chipSet}>
-        <Chip icon={<AccessTimeIcon />} label={`${movie.runtime} min.`} />
-        <Chip
-          icon={<MonetizationIcon />}
-          label={`${movie.revenue.toLocaleString()}`}
-        />
-        <Chip
-          icon={<StarRate />}
-          label={`${movie.vote_average} (${movie.vote_count}`}
-        />
-        <Chip label={`Released: ${movie.release_date}`} />
-      </Paper>
+          {movie.genres.map((g) => (
+            <li key={g.name}>
+              <Chip label={g.name} className={classes.chip} />
+            </li>
+          ))}
+        </Paper>
+        <Paper component="ul" className={classes.chipSet}>
+          <Chip icon={<AccessTimeIcon />} label={`${movie.runtime} min.`} />
+          <Chip
+            icon={<MonetizationIcon />}
+            label={`${movie.revenue.toLocaleString()}`}
+          />
+          <Chip
+            icon={<StarRate />}
+            label={`${movie.vote_average} (${movie.vote_count}`}
+          />
+          <Chip label={`Released: ${movie.release_date}`} />
+        </Paper>
+        <Paper component="ul" className={classes.chipSet}>
+          <li>
+            <Chip
+              label="Production Countries"
+              className={classes.chipLabel}
+              color="primary"
+            />
+          </li>
+          {movie.production_countries.map((pc) => (
+            <li key={pc.name}>
+              <Chip label={pc.name} className={classes.chip} />
+            </li>
+          ))}
+        </Paper>
       </div>
-      </>
+    </>
   );
 };
-export default  MovieDetails ;
+export default MovieDetails;
