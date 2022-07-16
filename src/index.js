@@ -6,12 +6,14 @@ import MoviePage from "./pages/movieDetailsPage";
 import FavouriteMoviesPage from "./pages/favouriteMoviesPage";
 import MovieReviewPage from "./pages/movieReviewPage";
 import SiteHeader from "./components/siteHeader";
+import UpcomingPage from "./pages/upcomingPage";
 
 const App = () => {
   return (
     <BrowserRouter>
       <SiteHeader />
       <Routes>
+        <Route path="/upcoming" element={<UpcomingPage />} />
         <Route path="/reviews/:id" element={<MovieReviewPage />} />
         <Route path="/movies/favourites" element={<FavouriteMoviesPage />} />
         <Route path="/movies/:id" element={<MoviePage />} />
