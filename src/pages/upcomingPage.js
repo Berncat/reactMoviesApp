@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from "react";
 import PageTemplate from "../components/templateMovieListPage";
 import { getUpcomingMovies } from "../api/tmdb-api";
+import AddToMustWatchIcon from "../components/cardIcons/addToMustWatch";
 
 const UpcomingPage = (props) => {
   const [movies, setMovies] = useState([]);
-  const favourites = movies.filter((m) => m.favourite);
-  localStorage.setItem("favourites", JSON.stringify(favourites));
-
-  const addToFavourites = () => null;
 
   useEffect(() => {
     getUpcomingMovies().then((movies) => {
@@ -20,7 +17,7 @@ const UpcomingPage = (props) => {
     <PageTemplate
       title="Upcoming Movies"
       movies={movies}
-      action={addToFavourites}
+      action={AddToMustWatchIcon}
     />
   );
 };
