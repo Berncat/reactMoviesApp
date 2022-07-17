@@ -1,4 +1,4 @@
-// eslint-disable-next-line import/no-anonymous-default-export
+
 export default {
     adult: false,
     backdrop_path: "/5Iw7zQTHVRBOYpA0V6z0yypOPZh.jpg",
@@ -79,3 +79,4 @@ export default {
     vote_average: 7,
     vote_count: 9692,
   };
+  
