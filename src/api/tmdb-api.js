@@ -14,7 +14,6 @@ export const getMovies = () => {
 };
 
 export const getMovie = (args) => {
-  console.log(args);
   const [, idPart] = args.queryKey;
   const { id } = idPart;
   return fetch(
@@ -71,7 +70,6 @@ export const getMovieReviews = (id) => {
   )
     .then((res) => res.json())
     .then((json) => {
-      // console.log(json.results);
       return json.results;
     });
 };

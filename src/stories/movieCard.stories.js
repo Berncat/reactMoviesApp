@@ -4,7 +4,10 @@ import SampleMovie from "./sampleData";
 import { MemoryRouter } from "react-router";
 import MoviesContextProvider from "../contexts/moviesContext";
 import { action } from "@storybook/addon-actions";
-import AddToFavoritesIcon from "../components/cardIcons/addToFavourites";
+import AddToFavouritesIcon from "../components/cardIcons/addToFavourites";
+import AddToMustWatchIcon from "../components/cardIcons/addToMustWatch";
+import WriteReviewIcon from "../components/cardIcons/writeReview";
+import RemoveFromFavourites from "../components/cardIcons/removeFromFavourites";
 
 export default {
   title: "Home Page/MovieCard",
@@ -15,25 +18,76 @@ export default {
   ],
 };
 
-export const Basic = () => {
+export const HomePage = () => {
   return (
     <MovieCard
       movie={SampleMovie}
-      action={(movie) => <AddToFavoritesIcon movie={movie} />}
+      action={(movie) => {
+        return (
+          <>
+            <AddToFavouritesIcon movie={movie} />
+            <AddToMustWatchIcon movie={movie} />
+            <WriteReviewIcon movie={movie} />
+          </>
+        );
+      }}
       taging={(movie) => null}
     />
   );
 };
-Basic.storyName = "Default";
+HomePage.storyName = "Home Page";
 
-export const Exceptional = () => {
+export const NoImage = () => {
   const sampleNoPoster = { ...SampleMovie, poster_path: undefined };
   return (
     <MovieCard
       movie={sampleNoPoster}
-      action={(movie) => <AddToFavoritesIcon movie={movie} />}
+      action={(movie) => {
+        return (
+          <>
+            <AddToFavouritesIcon movie={movie} />
+            <AddToMustWatchIcon movie={movie} />
+            <WriteReviewIcon movie={movie} />
+          </>
+        );
+      }}
       taging={(movie) => null}
     />
   );
 };
-Exceptional.storyName = "exception";
+NoImage.storyName = "No Image";
+
+export const FavouritesPage = () => {
+  return (
+    <MovieCard
+      movie={SampleMovie}
+      action={(movie) => {
+        return (
+          <>
+            <RemoveFromFavourites movie={movie} />
+            <WriteReviewIcon movie={movie} />
+          </>
+        );
+      }}
+      taging={(movie) => null}
+    />
+  );
+};
+FavouritesPage.storyName = "Favourites Page";
+
+export const UpcomingPage = () => {
+  return (
+    <MovieCard
+      movie={SampleMovie}
+      action={(movie) => {
+        return (
+          <>
+            <AddToMustWatchIcon  movie={movie} />
+          </>
+        );
+      }}
+      taging={(movie) => null}
+    />
+  );
+};
+UpcomingPage.storyName = "Upcoming Page";
