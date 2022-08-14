@@ -6,17 +6,17 @@ import Fab from "@material-ui/core/Fab";
 import Drawer from "@material-ui/core/Drawer";
 import { makeStyles } from "@material-ui/core/styles";
 import MovieList from "../movieList";
+import FilterIcon from "@material-ui/icons/FilterList";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: "#bfbfbf",
+    backgroundColor: "white",
     paddingTop: theme.spacing(7),
   },
   fab: {
-    marginTop: theme.spacing(8),
     position: "fixed",
-    top: theme.spacing(2),
-    right: theme.spacing(2),
+    top: theme.spacing(11.5),
+    right: theme.spacing(1.5),
   },
 }));
 
@@ -57,6 +57,7 @@ function MovieListPageTemplate({ movies, title, action }) {
         onClick={() => setDrawerOpen(true)}
         className={classes.fab}
       >
+        <FilterIcon />
         Filter
       </Fab>
       <Drawer
