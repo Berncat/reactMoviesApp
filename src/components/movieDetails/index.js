@@ -10,34 +10,27 @@ import NavigationIcon from "@material-ui/icons/Navigation";
 import Fab from "@material-ui/core/Fab";
 import Drawer from "@material-ui/core/Drawer";
 import MovieReviews from "../movieReviews";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles((theme) => ({
-  chipRoot: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    flexWrap: "wrap",
-    listStyle: "none",
-    padding: theme.spacing(1.5),
-    margin: 0,
-  },
-  chipSet: {
+  chips: {
     display: "flex",
     justifyContent: "center",
-    alignItems: "center",
-    flexWrap: "wrap",
-    listStyle: "none",
-    padding: theme.spacing(1.5),
-    margin: 0,
+    padding: 2,
+    alignItems: "normal",
   },
-  chipLabel: {
-    margin: theme.spacing(0.5),
+  chip: {
+    margin: 5,
+  },
+  paper: {
+    marginTop: 30,
   },
   fab: {
     position: "fixed",
-    top: theme.spacing(15),
-    right: theme.spacing(2),
+    top: theme.spacing(11.5),
+    right: theme.spacing(1.5),
   },
 }));
 
@@ -47,42 +40,56 @@ const MovieDetails = ({ movie }) => {
 
   return (
     <>
-      <Typography variant="h5" component="h3">
-        Overview
+      <Typography variant="h5">
+        <Box sx={{ fontWeight: "bold" }}>Overview</Box>
       </Typography>
-
-      <Typography variant="h6" component="p">
-        {movie.overview}
-      </Typography>
-      <div className={classes.chipRoot}>
-        <Paper component="ul" className={classes.chipSet}>
-          <li>
+      <Typography variant="h6">{movie.overview}</Typography>
+      <Paper className={classes.paper} elevation={24}>
+        <List>
+          <ListItem className={classes.chips}>
+            <Chip label="Genres" className={classes.chip} color="primary" />
+            {movie.genres.map((g) => (
+              <Chip
+                key={g.name}
+                label={g.name}
+                className={classes.chip}
+                color="primary"
+                variant="outlined"
+              />
+            ))}
+          </ListItem>
+          <ListItem className={classes.chips}>
             <Chip
-              label="Genres"
-              className={classes.chipLabel}
+              icon={<AccessTimeIcon />}
+              label={`${movie.runtime} min.`}
               color="primary"
+              variant="outlined"
+              className={classes.chip}
             />
-          </li>
-          {movie.genres.map((g) => (
-            <li key={g.name}>
-              <Chip label={g.name} className={classes.chip} />
-            </li>
-          ))}
-        </Paper>
-        <Paper component="ul" className={classes.chipSet}>
-          <Chip icon={<AccessTimeIcon />} label={`${movie.runtime} min.`} />
-          <Chip
-            icon={<MonetizationIcon />}
-            label={`${movie.revenue.toLocaleString()}`}
-          />
-          <Chip
-            icon={<StarRate />}
-            label={`${movie.vote_average} (${movie.vote_count}`}
-          />
-          <Chip label={`Released: ${movie.release_date}`} />
-        </Paper>
-      </div>
-      {/* New */}
+            <Chip
+              icon={<MonetizationIcon />}
+              label={`${movie.revenue.toLocaleString()}`}
+              color="primary"
+              variant="outlined"
+              className={classes.chip}
+            />
+            <Chip
+              icon={<StarRate />}
+              label={`${movie.vote_average} (${movie.vote_count}`}
+              color="primary"
+              variant="outlined"
+              className={classes.chip}
+            />
+            <Chip
+              label={`Released: ${movie.release_date}`}
+              color="primary"
+              variant="outlined"
+              className={classes.chip}
+            />
+          </ListItem>
+        </List>
+      </Paper>
+
       <Fab
         color="secondary"
         variant="extended"
