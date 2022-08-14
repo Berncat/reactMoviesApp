@@ -4,7 +4,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
-
+import Box from "@material-ui/core/Box";
 import MenuIcon from "@material-ui/icons/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
@@ -22,13 +22,25 @@ const useStyles = makeStyles((theme) => ({
   inactiveLink: {
     color: "white",
     padding: theme.spacing(1),
-    fontSize: "1.5rem",
+    fontSize: "1rem",
+    fontFamily: ["Roboto", "Helvetica", "Arial", "sans-serif"],
+    textDecoration: "none",
+    "&:hover": {
+      borderRadius: "24px",
+      background: "black",
+    },
   },
   activeLink: {
     color: "black",
     padding: theme.spacing(1),
-    fontSize: "1.5rem",
-    background: "#bfbfbf",
+    fontSize: "1rem",
+    fontFamily: ["Roboto", "Helvetica", "Arial", "sans-serif"],
+    background: "white",
+    borderRadius: "24px",
+    textDecoration: "none",
+    "&:hover": {
+      textDecoration: "none",
+    },
   },
 }));
 
@@ -44,8 +56,6 @@ const SiteHeader = () => {
     { label: "Home", path: "/" },
     { label: "Upcoming", path: "/upcoming" },
     { label: "Favourites", path: "/movies/favourites" },
-    { label: "Option 3", path: "/" },
-    { label: "Option 4", path: "/" },
   ];
 
   const handleMenuSelect = (pageURL) => {
@@ -66,10 +76,12 @@ const SiteHeader = () => {
       >
         <Toolbar>
           <Typography variant="h4" className={classes.title}>
-            TMDB Client
-          </Typography>
-          <Typography variant="h6" className={classes.title}>
-            All you ever wanted to know about Movies!
+            <Box sx={{ fontWeight: "bold" }}>TMDB Client</Box>
+            <Typography className={classes.title}>
+              <Box sx={{ fontStyle: "italic" }}>
+                All you ever wanted to know about Movies!
+              </Box>
+            </Typography>
           </Typography>
           {isMobile ? (
             <>
