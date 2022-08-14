@@ -13,7 +13,8 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-around",
     alignItems: "center",
     flexWrap: "wrap",
-    marginBottom: theme.spacing(1.5),
+    marginTop: theme.spacing(3),
+    marginBottom: theme.spacing(3),
   },
 }));
 
@@ -22,7 +23,7 @@ const Header = (props) => {
   const classes = useStyles();
   const title = props.title;
   return (
-    <Paper component="div" className={classes.root}>
+    <Paper component="div" elevation={24} className={classes.root}>
       <IconButton aria-label="go back" onClick={() => navigate(-1)}>
         <ArrowBackIcon color="primary" fontSize="large" />
       </IconButton>
