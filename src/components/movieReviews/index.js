@@ -15,6 +15,9 @@ const useStyles = makeStyles({
   table: {
     minWidth: 550,
   },
+  tableHeader: {
+    fontWeight: "bold",
+  },
 });
 
 export default function MovieReviews({ movie }) {
@@ -33,9 +36,13 @@ export default function MovieReviews({ movie }) {
       <Table className={classes.table} aria-label="reviews table">
         <TableHead>
           <TableRow>
-            <TableCell>Author</TableCell>
-            <TableCell align="center">Excerpt</TableCell>
-            <TableCell align="right">More</TableCell>
+            <TableCell className={classes.tableHeader}>Author</TableCell>
+            <TableCell className={classes.tableHeader} align="center">
+              Excerpt
+            </TableCell>
+            <TableCell className={classes.tableHeader}>
+              Click for full review
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
