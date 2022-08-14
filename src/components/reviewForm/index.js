@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   snack: {
-    width: "50%",
+    width: "25%",
     "& > * ": {
       width: "100%",
     },
@@ -92,7 +92,7 @@ const ReviewForm = ({ movie }) => {
       </Typography>
       <Snackbar
         className={classes.snack}
-        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
         open={open}
         onClose={handleSnackClose}
       >
@@ -101,7 +101,7 @@ const ReviewForm = ({ movie }) => {
           variant="filled"
           onClose={handleSnackClose}
         >
-          <Typography variant="h4">
+          <Typography variant="h6">
             Thank you for submitting a review
           </Typography>
         </MuiAlert>
