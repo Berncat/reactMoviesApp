@@ -65,7 +65,7 @@ export default function MovieCard({ movie, action }) {
   }
 
   return (
-    <Card className={classes.card}>
+    <Card className={classes.card} elevation={24}>
       <CardHeader
         className={classes.header}
         title={
