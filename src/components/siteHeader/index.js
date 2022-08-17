@@ -24,10 +24,12 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(1),
     fontSize: "1rem",
     fontFamily: ["Roboto", "Helvetica", "Arial", "sans-serif"],
+    borderRadius: "24px",
+    background:"#3f30a5",
     textDecoration: "none",
     "&:hover": {
-      borderRadius: "24px",
       background: "black",
+      color: "white",
     },
   },
   activeLink: {
@@ -56,6 +58,7 @@ const SiteHeader = () => {
     { label: "Home", path: "/" },
     { label: "Upcoming", path: "/upcoming" },
     { label: "Favourites", path: "/movies/favourites" },
+    { label: "Must Watch", path: "/movies/mustwatch" },
   ];
 
   const handleMenuSelect = (pageURL) => {

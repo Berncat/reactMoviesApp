@@ -16,7 +16,7 @@ import Chip from "@material-ui/core/Chip";
 import InfoIcon from "@material-ui/icons/Info";
 import Divider from "@material-ui/core/Divider";
 import AvatarGroup from "@material-ui/lab/AvatarGroup";
-import QueueIcon from "@material-ui/icons/Queue";
+import QueueIcon from "@material-ui/icons/AddToQueue";
 import RateReviewIcon from "@material-ui/icons/RateReview";
 
 const useStyles = makeStyles({
