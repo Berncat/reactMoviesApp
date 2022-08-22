@@ -18,10 +18,15 @@ import Divider from "@material-ui/core/Divider";
 import AvatarGroup from "@material-ui/lab/AvatarGroup";
 import QueueIcon from "@material-ui/icons/Queue";
 import RateReviewIcon from "@material-ui/icons/RateReview";
+import FilmIcon from "@material-ui/icons/LocalMovies";
 
 const useStyles = makeStyles({
-  card: { maxWidth: 345 },
-  media: { height: 400 },
+  card: { width:340 },
+  media: {
+    marginLeft: 20,
+    width: 300,
+    height: 450,
+  },
   avatar1: {
     backgroundColor: "rgb(255, 0, 0)",
   },
@@ -70,7 +75,7 @@ export default function MovieCard({ movie, action }) {
         className={classes.header}
         title={
           <Typography variant="h6" gutterBottom>
-            {movie.title}{" "}
+            {movie.title}
           </Typography>
         }
         subheader={
@@ -124,6 +129,15 @@ export default function MovieCard({ movie, action }) {
             icon={<InfoIcon />}
             label="MORE INFO ..."
             color="primary"
+            clickable={true}
+          />
+        </Link>
+        <Link to={`/movies/${movie.id}/similar`}>
+          <Chip
+            className={classes.chip}
+            icon={<FilmIcon />}
+            label="SIMILAR MOVIES"
+            color="secondary"
             clickable={true}
           />
         </Link>

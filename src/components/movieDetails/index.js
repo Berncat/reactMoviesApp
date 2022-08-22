@@ -13,19 +13,28 @@ import MovieReviews from "../movieReviews";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import Box from "@material-ui/core/Box";
+import { Link } from "react-router-dom";
+import FilmIcon from "@material-ui/icons/LocalMovies";
+import ActorIcon from "@material-ui/icons/Person";
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    fontSize: "1rem",
+    fontFamily: ["Roboto", "Helvetica", "Arial", "sans-serif"],
+  },
+  paper: {
+    marginTop: 0,
+    padding: 16,
+  },
   chips: {
     display: "flex",
+    flexWrap: "wrap",
     justifyContent: "center",
     padding: 2,
     alignItems: "normal",
   },
   chip: {
     margin: 5,
-  },
-  paper: {
-    marginTop: 30,
   },
   fab: {
     position: "fixed",
@@ -40,11 +49,13 @@ const MovieDetails = ({ movie }) => {
 
   return (
     <>
-      <Typography variant="h5">
-        <Box sx={{ fontWeight: "bold" }}>Overview</Box>
-      </Typography>
-      <Typography variant="h6">{movie.overview}</Typography>
       <Paper className={classes.paper} elevation={24}>
+        <Typography variant="h5">
+          <Box sx={{ fontWeight: "bold" }}>Overview</Box>
+        </Typography>
+        <br></br>
+        <Typography className={classes.root}>{movie.overview}</Typography>
+        <br></br>
         <List>
           <ListItem className={classes.chips}>
             <Chip label="Genres" className={classes.chip} color="primary" />
@@ -75,7 +86,7 @@ const MovieDetails = ({ movie }) => {
             />
             <Chip
               icon={<StarRate />}
-              label={`${movie.vote_average} (${movie.vote_count}`}
+              label={`${movie.vote_average} (${movie.vote_count})`}
               color="primary"
               variant="outlined"
               className={classes.chip}
@@ -87,8 +98,29 @@ const MovieDetails = ({ movie }) => {
               className={classes.chip}
             />
           </ListItem>
+          <ListItem className={classes.chips}>
+            <Link to={`/movies/${movie.id}`}>
+              <Chip
+                className={classes.chip}
+                icon={<ActorIcon />}
+                label="CAST"
+                color="primary"
+                clickable={true}
+              />
+            </Link>
+            <Link to={`/movies/${movie.id}/similar`}>
+              <Chip
+                className={classes.chip}
+                icon={<FilmIcon />}
+                label="SIMILAR MOVIES"
+                color="secondary"
+                clickable={true}
+              />
+            </Link>
+          </ListItem>
         </List>
       </Paper>
+      <br></br>
 
       <Fab
         color="secondary"

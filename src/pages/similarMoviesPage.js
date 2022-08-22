@@ -2,28 +2,28 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import MovieDetails from "../components/movieDetails";
 import PageTemplate from "../components/templateMoviePage";
-import { getMovie, getCredits } from "../api/tmdb-api";
+import { getMovie, getSimilarMovies } from "../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from "../components/spinner";
-import ActorList from "../components/actorList";
+import MovieGridList from "../components/movieGridList";
 
-const MovieDetailsPage = () => {
+const SimilarMoviesPage = () => {
   const { id } = useParams();
   const {
     data: movie,
     error: movieError,
     isLoading: movieIsLoading,
     isError: movieIsError,
-  } = useQuery(["movie", { id: id }], getMovie);
+  } = useQuery(["movie", { id: id }], getMovie) ;
 
   const {
-    data: credits,
-    error: creditsError,
-    isLoading: creditsIsLoading,
-    isError: creditsIsError,
-  } = useQuery(["credits", { id: id }], getCredits);
+    data: similar,
+    error: similarError,
+    isLoading: similarIsLoading,
+    isError: similarIsError,
+  } = useQuery(["similar", { id: id }], getSimilarMovies) ;
 
-  if (movieIsLoading || creditsIsLoading) {
+  if (movieIsLoading || similarIsLoading) {
     return <Spinner />;
   }
 
@@ -31,11 +31,11 @@ const MovieDetailsPage = () => {
     return <h1>{movieError.message}</h1>;
   }
 
-  if (creditsIsError) {
-    return <h1>{creditsError.message}</h1>;
+  if (similarIsError) {
+    return <h1>{similarError.message}</h1>;
   }
 
-  const cast = credits.cast;
+  const similarMovies = similar.results;
 
   return (
     <>
@@ -43,7 +43,7 @@ const MovieDetailsPage = () => {
         <>
           <PageTemplate movie={movie}>
             <MovieDetails movie={movie} />
-            <ActorList cast={cast} />
+            <MovieGridList title="Similar Movies" movies={similarMovies} />
           </PageTemplate>
         </>
       ) : (
@@ -53,4 +53,4 @@ const MovieDetailsPage = () => {
   );
 };
 
-export default MovieDetailsPage;
+export default SimilarMoviesPage;

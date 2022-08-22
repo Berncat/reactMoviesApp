@@ -13,6 +13,10 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "white",
     paddingTop: theme.spacing(7),
   },
+  grid: {
+    display: "flex",
+    justifyContent: "space-around",
+  },
   fab: {
     position: "fixed",
     top: theme.spacing(11.5),
@@ -47,7 +51,7 @@ function MovieListPageTemplate({ movies, title, action }) {
         <Grid item xs={12}>
           <Header title={title} />
         </Grid>
-        <Grid item container spacing={5}>
+        <Grid item container className={classes.grid} spacing={5}>
           <MovieList action={action} movies={displayedMovies} />
         </Grid>
       </Grid>
