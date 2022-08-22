@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import IconButton from "@material-ui/core/IconButton";
-import PlaylistRemoveIcon from "@material-ui/icons/RemoveFromQueue";
+import PlaylistRemoveIcon from "@material-ui/icons/DeleteSweep";
 import { MoviesContext } from "../../contexts/moviesContext";
 
 const RemoveFromMustWatchIcon = ({ movie }) => {

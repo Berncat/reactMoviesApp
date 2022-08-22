@@ -1,12 +1,12 @@
 import React from "react";
 import PageTemplate from "../components/templateMoviePage";
-import ReviewForm from "../components/reviewForm";
+import MovieReview from "../components/movieReview";
 import { useLocation } from "react-router-dom";
 import { useQuery } from "react-query";
 import { getMovie } from "../api/tmdb-api";
 import Spinner from "../components/spinner";
 
-const WriteReviewPage = (props) => {
+const MyReviewPage = () => {
   const location = useLocation();
   const { movieId, review } = location.state;
   const {
@@ -23,11 +23,12 @@ const WriteReviewPage = (props) => {
   if (isError) {
     return <h1>{error.message}</h1>;
   }
+
   return (
     <PageTemplate movie={movie}>
-      <ReviewForm movie={movie} review={review} />
+      <MovieReview review={review} />
     </PageTemplate>
   );
 };
 
-export default WriteReviewPage;
+export default MyReviewPage;

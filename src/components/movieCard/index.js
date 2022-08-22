@@ -16,7 +16,7 @@ import Chip from "@material-ui/core/Chip";
 import InfoIcon from "@material-ui/icons/Info";
 import Divider from "@material-ui/core/Divider";
 import AvatarGroup from "@material-ui/lab/AvatarGroup";
-import QueueIcon from "@material-ui/icons/AddToQueue";
+import QueueIcon from "@material-ui/icons/Queue";
 import RateReviewIcon from "@material-ui/icons/RateReview";
 
 const useStyles = makeStyles({
@@ -58,7 +58,7 @@ export default function MovieCard({ movie, action }) {
     movie.mustWatch = false;
   }
 
-  if (Object.values(myReviews).find((id) => id.movieId === movie.id)) {
+  if (myReviews.find((review) => review.movieId === movie.id)) {
     movie.reviewed = true;
   } else {
     movie.reviewed = false;

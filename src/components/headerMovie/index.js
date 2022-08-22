@@ -27,7 +27,7 @@ const MovieHeader = (props) => {
   const movie = props.movie;
 
   return (
-    <Paper component="div" className={classes.root} elevation={24}>
+    <Paper className={classes.root} elevation={24}>
       <IconButton aria-label="go back" onClick={() => navigate(-1)}>
         <ArrowBackIcon color="primary" fontSize="large" />
       </IconButton>

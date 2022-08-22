@@ -5,7 +5,7 @@ import Spinner from "../components/spinner";
 import { getMovies } from "../api/tmdb-api";
 import AddToFavouritesIcon from "../components/cardIcons/addToFavourites";
 import AddToMustWatchIcon from "../components/cardIcons/addToMustWatch";
-import WriteReviewIcon from "../components/cardIcons/writeReview";
+import MyReviewIcon from "../components/cardIcons/myReview";
 
 const HomePage = (props) => {
   const { data, error, isLoading, isError } = useQuery("discover", getMovies);
@@ -24,12 +24,12 @@ const HomePage = (props) => {
       title="Discover Movies"
       movies={movies}
       action={(movie) => {
-        return(
-        <>
-          <AddToFavouritesIcon movie={movie} />
-          <AddToMustWatchIcon movie={movie} />
-          <WriteReviewIcon movie={movie} />
-        </>
+        return (
+          <>
+            <AddToFavouritesIcon movie={movie} />
+            <AddToMustWatchIcon movie={movie} />
+            <MyReviewIcon movie={movie} />
+          </>
         );
       }}
     />

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { MoviesContext } from "../../contexts/moviesContext";
 import IconButton from "@material-ui/core/IconButton";
-import QueueIcon from "@material-ui/icons/AddToQueue";
+import QueueIcon from "@material-ui/icons/Queue";
 
 const AddToMustWatchIcon = ({ movie }) => {
   const context = useContext(MoviesContext);

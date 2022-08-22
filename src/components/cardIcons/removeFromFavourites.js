@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import IconButton from "@material-ui/core/IconButton";
-import DeleteIcon from "@material-ui/icons/Delete";
+import DeleteIcon from "@material-ui/icons/DeleteSweep";
 import { MoviesContext } from "../../contexts/moviesContext";
 
 const RemoveFromFavouritesIcon = ({ movie }) => {
@@ -15,7 +15,7 @@ const RemoveFromFavouritesIcon = ({ movie }) => {
       aria-label="remove from favorites"
       onClick={handleRemoveFromFavourites}
     >
-      <DeleteIcon color="primary" fontSize="large" />
+      <DeleteIcon htmlColor="red" fontSize="large" />
     </IconButton>
   );
 };

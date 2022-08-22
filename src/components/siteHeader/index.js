@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "1rem",
     fontFamily: ["Roboto", "Helvetica", "Arial", "sans-serif"],
     borderRadius: "24px",
-    background:"#3f30a5",
+    background: "#3f30a5",
     textDecoration: "none",
     "&:hover": {
       background: "black",
@@ -59,6 +59,7 @@ const SiteHeader = () => {
     { label: "Upcoming", path: "/upcoming" },
     { label: "Favourites", path: "/movies/favourites" },
     { label: "Must Watch", path: "/movies/mustwatch" },
+    { label: "My Reviews", path: "/movies/myreviews" },
   ];
 
   const handleMenuSelect = (pageURL) => {

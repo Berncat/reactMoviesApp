@@ -3,7 +3,7 @@ import React, { useState } from "react";
 export const MoviesContext = React.createContext(null);
 
 const MoviesContextProvider = (props) => {
-  const [myReviews, setMyReviews] = useState({});
+  const [myReviews, setMyReviews] = useState([]);
   const [favourites, setFavourites] = useState([]);
   const [mustWatch, setMustWatch] = useState([]);
 
@@ -18,8 +18,21 @@ const MoviesContextProvider = (props) => {
     setFavourites(favourites.filter((mId) => mId !== movie.id));
   };
 
-  const addReview = (movie, review) => {
-    setMyReviews({ ...myReviews, [movie.id]: review });
+  const addReview = (review) => {
+    let found = myReviews.findIndex(
+      (reviewed) => reviewed.movieId === review.movieId
+    );
+
+    if (found > -1) {
+      myReviews[found] = review;
+    } else {
+      let newMyReviews = [...myReviews, review];
+      setMyReviews(newMyReviews);
+    }
+  };
+
+  const removeFromMyReviews = (movieId) => {
+    setMyReviews(myReviews.filter((review) => review.movieId !== movieId));
   };
 
   const addToMustWatch = (movie) => {
@@ -41,6 +54,7 @@ const MoviesContextProvider = (props) => {
         removeFromFavourites,
         myReviews,
         addReview,
+        removeFromMyReviews,
         mustWatch,
         addToMustWatch,
         removeFromMustWatch,

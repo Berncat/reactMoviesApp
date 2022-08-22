@@ -23,7 +23,7 @@ const Header = (props) => {
   const classes = useStyles();
   const title = props.title;
   return (
-    <Paper component="div" elevation={24} className={classes.root}>
+    <Paper elevation={24} className={classes.root}>
       <IconButton aria-label="go back" onClick={() => navigate(-1)}>
         <ArrowBackIcon color="primary" fontSize="large" />
       </IconButton>

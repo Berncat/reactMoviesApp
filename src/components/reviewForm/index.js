@@ -14,23 +14,23 @@ import { useNavigate } from "react-router-dom";
 const ratings = [
   {
     value: 5,
-    label: "Excellent",
+    label: "5. Excellent",
   },
   {
     value: 4,
-    label: "Good",
+    label: "4. Good",
   },
   {
     value: 3,
-    label: "Average",
+    label: "3. Average",
   },
   {
     value: 2,
-    label: "Poor",
+    label: "2. Poor",
   },
   {
     value: 0,
-    label: "Terrible",
+    label: "1. Terrible",
   },
 ];
 
@@ -61,28 +61,33 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ReviewForm = ({ movie }) => {
+const ReviewForm = ({ movie, review }) => {
   const classes = useStyles();
   const { register, handleSubmit, errors, reset } = useForm();
   const context = useContext(MoviesContext);
-  const [rating, setRating] = useState(3);
+  const [rating, setRating] = useState(review.rating ?? 3);
   const [open, setOpen] = useState(false);
-  const navigate = useNavigate()          
+  const navigate = useNavigate();
 
   const handleRatingChange = (event) => {
     setRating(event.target.value);
   };
 
-  const handleSnackClose = (event) => {     
+  const handleSnackClose = (event) => {
     setOpen(false);
-    navigate("/");
+    navigate("/movies/myreviews/");
   };
 
   const onSubmit = (review) => {
     review.movieId = movie.id;
     review.rating = rating;
-    context.addReview(movie, review);
+    context.addReview(review);
     setOpen(true);
+  };
+
+  const removeReview = () => {
+    context.removeFromMyReviews(review.movieId);
+    navigate("/movies/myreviews");
   };
 
   return (
@@ -120,12 +125,11 @@ const ReviewForm = ({ movie }) => {
           label="Author's name"
           name="author"
           autoFocus
+          defaultValue={review.author}
           inputRef={register({ required: "Author name required" })}
         />
         {errors.author && (
-          <Typography variant="h6" component="p">
-            {errors.author.message}
-          </Typography>
+          <MuiAlert severity="error">{errors.author.message}</MuiAlert>
         )}
 
         <TextField
@@ -138,15 +142,14 @@ const ReviewForm = ({ movie }) => {
           id="content"
           multiline
           minRows={10}
+          defaultValue={review.content}
           inputRef={register({
             required: "No review text",
             minLength: { value: 10, message: "Review is too short" },
           })}
         />
         {errors.content && (
-          <Typography variant="h6" component="p">
-            {errors.content.message}
-          </Typography>
+          <MuiAlert severity="error">{errors.content.message}</MuiAlert>
         )}
         <TextField
           id="select-rating"
@@ -171,22 +174,34 @@ const ReviewForm = ({ movie }) => {
             color="primary"
             className={classes.submit}
           >
-            Submit
+            {review.rating ? "Update" : "Submit"}
           </Button>
-          <Button
-            type="reset"
-            variant="contained"
-            color="secondary"
-            className={classes.submit}
-            onClick={() => {
-              reset({
-                author: "",
-                content: "",
-              });
-            }}
-          >
-            Reset
-          </Button>
+          {review.rating ? (
+            <Button
+              type="remove"
+              variant="contained"
+              color="secondary"
+              className={classes.button}
+              onClick={removeReview}
+            >
+              Remove
+            </Button>
+          ) : (
+            <Button
+              type="reset"
+              variant="contained"
+              color="secondary"
+              className={classes.submit}
+              onClick={() => {
+                reset({
+                  author: "",
+                  content: "",
+                });
+              }}
+            >
+              Reset
+            </Button>
+          )}
         </Box>
       </form>
     </Box>
