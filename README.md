@@ -1,34 +1,58 @@
 
 # ICT Skills 2 Assignment.
 
-Name: [your name]
+Name: Bernard Cattigan
 
 ## Overview.
 
-[ A paragraph on your React app's concept followed by a bullet-point list of its feature set - only list new/modified features if you are expanding the Movies app. ]
+My React app is a continuation of the [Movies app](https://github.com/Berncat/ict2-moviesApp) we completed for the first assignment for ICT skills 2 module.
 
-e.g. 
-+ Feature 1
-+ Feature 2
-+ Feature 3
-+ etc
-+ etc
+Features added:
+ 
++ Updated Movie Card Layout - Must watch avatar 
++ Updated Movie Card Layout - Reviewed avatar
++ Updated Nav Bar Design - Hover
++ Updated Movie Posters - Carousel image display
++ My Reviews Page and related functionality
++ Actors in the movie
++ Actors Details page
++ Actors movie roles
++ Similar movies
++ Filter by Rating
++ Sorting by Date
++ Sorting by Rating
 
 ## Setup requirements.
 
-[ Briefly state (to a third party) the setup steps necessary to run your app/client locally, e.g. .env and any other config files.]
+Download repository of latest release here
+
+### Building
+```
+npm install
+```
+
+### Add .ENV file
+```
+REACT_APP_TMDB_KEY= .....YOUR API KEY.....
+FAST_REFRESH=false
+```
+
+### Running
+```
+npm start
+```
 
 ## App Design.
 
 ### Routing/Navigation.
 
-[List the set of routes your app supports - only mention new instances if you expanded the Movies Fan app. State the view linked with each route.] 
+Below is a list of new routes which were added:
 
-e.g.
-+ /movies/:id - detailed information on a specific movie.
-+ /movies/upcoming - lists movies soon to be shown in cinemas.
-+ etc.
-+ etc.
++ /movies/mustwatch - lists movies marked as must watch
++ /movies/myreviews - lists movies you have reviewed
++ /movies/:id/similar - lists similar movies based on a specific movie
++ /movies/myreview/ - detailed information on a specific review.
++ /actors/:id - detailed information on a specific actor.
 
 ### Views/Pages.
 
