@@ -30,11 +30,13 @@ function MovieListPageTemplate({ movies, title, action }) {
   const [genreFilter, setGenreFilter] = useState("0");
   const [minRatingFilter, setMinRatingFilter] = useState("0");
   const [maxRatingFilter, setMaxRatingFilter] = useState("10");
+  const [movieSorting, setMovieSorting] = useState("0");
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const genreId = Number(genreFilter);
   const minRating = minRatingFilter;
   const maxRating = maxRatingFilter;
+  const sorting = Number(movieSorting);
 
   let displayedMovies = movies
     .filter((m) => {
@@ -47,6 +49,19 @@ function MovieListPageTemplate({ movies, title, action }) {
       return (
         Number(m.vote_average) > minRating && Number(m.vote_average) < maxRating
       );
+    })
+    .sort((a, b) => {
+      if (sorting === 0) {
+        return new Date(b.release_date) - new Date(a.release_date);
+      } else if (sorting === 1) {
+        return new Date(a.release_date) - new Date(b.release_date);
+      } else if (sorting === 2) {
+        return b.vote_average - a.vote_average;
+      } else if (sorting === 4) {
+        return a.vote_average - b.vote_average;
+      } else {
+        return new Date(b.release_date) - new Date(a.release_date);
+      }
     });
 
   const handleChange = (type, value) => {
@@ -56,9 +71,10 @@ function MovieListPageTemplate({ movies, title, action }) {
       setMinRatingFilter(value);
     } else if (type === "maxRating") {
       setMaxRatingFilter(value);
+    } else if (type === "sorting") {
+      setMovieSorting(value);
     } else {
       setGenreFilter(value);
-      
     }
   };
 
@@ -92,6 +108,7 @@ function MovieListPageTemplate({ movies, title, action }) {
           genreFilter={genreFilter}
           minRatingFilter={minRatingFilter}
           maxRatingFilter={maxRatingFilter}
+          movieSorting={movieSorting}
         />
       </Drawer>
     </>

@@ -47,7 +47,25 @@ export default function FilterMoviesCard(props) {
     genres.unshift({ id: "0", name: "All" });
   }
 
-  const ratings = [0,1,2,3,4,5,6,7,8,9,10]
+  const ratings = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const sortings = [
+    {
+      value: 0,
+      label: "Date - Newest to Oldest",
+    },
+    {
+      value: 1,
+      label: "Date - Oldest to Newest",
+    },
+    {
+      value: 2,
+      label: "Rating - Highest to Lowest",
+    },
+    {
+      value: 3,
+      label: "Rating - Lowest to Highest",
+    },
+  ];
 
   const handleChange = (e, type, value) => {
     e.preventDefault();
@@ -69,6 +87,9 @@ export default function FilterMoviesCard(props) {
 
   const handleMaxRatingChange = (e) => {
     handleChange(e, "maxRating", e.target.value);
+  };
+  const handleSortingChange = (e) => {
+    handleChange(e, "sorting", e.target.value);
   };
 
   return (
@@ -151,6 +172,23 @@ export default function FilterMoviesCard(props) {
             <SearchIcon fontSize="large" />
             Sort the movies.
           </Typography>
+          <FormControl className={classes.formControl}>
+            <InputLabel id="sort-label">Sort by</InputLabel>
+            <Select
+              labelId="sort-label"
+              id="sort-select"
+              value={props.movieSorting}
+              onChange={handleSortingChange}
+            >
+              {sortings.map((sort) => {
+                return (
+                  <MenuItem key={sort.value} value={sort.value}>
+                    {sort.label}
+                  </MenuItem>
+                );
+              })}
+            </Select>
+          </FormControl>
         </CardContent>
       </Card>
     </>
