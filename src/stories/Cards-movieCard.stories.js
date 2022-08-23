@@ -1,16 +1,17 @@
 import React from "react";
 import MovieCard from "../components/movieCard";
-import SampleMovie from "./sampleData";
+import SampleMovie from "./sampleMovie";
 import { MemoryRouter } from "react-router";
 import MoviesContextProvider from "../contexts/moviesContext";
 import { action } from "@storybook/addon-actions";
 import AddToFavouritesIcon from "../components/cardIcons/addToFavourites";
 import AddToMustWatchIcon from "../components/cardIcons/addToMustWatch";
-import WriteReviewIcon from "../components/cardIcons/writeReview";
 import RemoveFromFavourites from "../components/cardIcons/removeFromFavourites";
+import MyReviewIcon from "../components/cardIcons/myReview";
+import RemoveFromMustWatch from "../components/cardIcons/removeFromMustWatch";
 
 export default {
-  title: "Home Page/MovieCard",
+  title: "Cards/MovieCard",
   component: MovieCard,
   decorators: [
     (Story) => <MemoryRouter initialEntries={["/"]}>{Story()}</MemoryRouter>,
@@ -27,7 +28,7 @@ export const HomePage = () => {
           <>
             <AddToFavouritesIcon movie={movie} />
             <AddToMustWatchIcon movie={movie} />
-            <WriteReviewIcon movie={movie} />
+            <MyReviewIcon movie={movie} />
           </>
         );
       }}
@@ -47,7 +48,7 @@ export const NoImage = () => {
           <>
             <AddToFavouritesIcon movie={movie} />
             <AddToMustWatchIcon movie={movie} />
-            <WriteReviewIcon movie={movie} />
+            <MyReviewIcon movie={movie} />
           </>
         );
       }}
@@ -65,7 +66,7 @@ export const FavouritesPage = () => {
         return (
           <>
             <RemoveFromFavourites movie={movie} />
-            <WriteReviewIcon movie={movie} />
+            <MyReviewIcon movie={movie} />
           </>
         );
       }}
@@ -91,3 +92,20 @@ export const UpcomingPage = () => {
   );
 };
 UpcomingPage.storyName = "Upcoming Page";
+
+export const MustWatchPage = () => {
+  return (
+    <MovieCard
+      movie={SampleMovie}
+      action={(movie) => {
+        return (
+          <>
+            <RemoveFromMustWatch movie={movie} />
+          </>
+        );
+      }}
+      taging={(movie) => null}
+    />
+  );
+};
+MustWatchPage.storyName = "MustWatch Page";

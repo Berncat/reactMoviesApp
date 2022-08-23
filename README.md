@@ -24,7 +24,9 @@ Features added:
 
 ## Setup requirements.
 
-Download repository of latest release here
+Node.js installed
+React installed
+Download repository
 
 ### Building
 ```
@@ -56,62 +58,61 @@ Below is a list of new routes which were added:
 
 ### Views/Pages.
 
-[ For each view in your app, show a screenshot and caption - only new/modified ones in the case of the Movies Fan app. If necessary, use multiple screenshots to cover a view's full capability.
+Views below:
 
-e.g.
->Lists movies from the Discover endpoint. Filtering on title and genre attributes is supported.
+![][h1]
 
-![][d1]
+![][h2]
 
-![][d2]
+>Home page showing new card format and new filtering
 
->Shows detailed information on a specific movie
+![][m1]
 
-![][detail]
+>Must watch page
 
+![][r1]
+
+![][r2]
+
+>There is now also my review pages
+
+![][c1]
+
+>Cast listing
+
+![][s1]
+
+>Similar Movies listing
 
 ### Component catalogue.
 
-[ Use the Storybook UI to highlight the new components for which you developed stories.]
-e.g.
+See storybook components list below:
 
 ![][stories]
 
 ## Caching.
 
-[ List the TMDB server state cached by the app. Include a screenshot(s) of the react-query dev tools to validate your list.]
+Below is a list of all items that are cached
 
-e.g.
-+ Discover movies (pagination support)
-+ Movie details
- + etc
-+ etc
++ Genres
++ Actor Images
++ Actor Details
++ Actors Credits
++ Movie Details
++ Movie Images
++ Discover Movies
++ Upcoming Movies
++ Movie Cast
++ Similar Movies
 
 ![][caching]
 
-## Authentication (if relevant).
-
-[Briefly state how you implemented authentication for the app, e.g. basic, Firebase, etc. Also, list the routes that are private/protected.]
-
-e.g.
-+ /reviews/:id
-+ /movies/favourites
-
-## Server-side persistence (if relevant)
-
-[ Specify the persistence 
-platform your app uses (e.g. TMDB lists, Firestore) and itemize the data it persists.]
-
-## Additional features (if relevant),
-
-[Mention any additional user features of your app that may not be obvious from the previous sections, e.g. pagination, extended filtering/sorting, searching.]
-
-## Independent learning (if relevant),
-
-[Briefly explain any aspects of your assignment work that required independent learning (i.e. not addressed in the lectures or labs) on your behalf., e.g. 3rd-party components, libraries, tools. Include source code references.]
-
-[d1]: ./public/discover1.png
-[d2]: ./public/discover2.png
-[detail]: ./public/detail.png
+[h1]: ./public/home.png
+[h2]: ./public/homeFiltered.png
+[m1]: ./public/mustWatch.png
+[r1]: ./public/myReviews.png
+[r2]: ./public/myReview.png
+[c1]: ./public/castInfo.png
+[s1]: ./public/similarMovies.png
 [caching]: ./public/caching.png
 [stories]: ./public/stories.png

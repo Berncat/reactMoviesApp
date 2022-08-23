@@ -1,14 +1,16 @@
 import React from "react";
 import MovieList from "../components/movieList";
-import SampleMovie from "./sampleData";
+import SampleMovie from "./sampleMovie";
 import { MemoryRouter } from "react-router";
 import { action } from "@storybook/addon-actions";
-import AddToFavoritesIcon from "../components/cardIcons/addToFavourites";
 import Grid from "@material-ui/core/Grid";
 import MoviesContextProvider from "../contexts/moviesContext";
+import AddToFavouritesIcon from "../components/cardIcons/addToFavourites";
+import AddToMustWatchIcon from "../components/cardIcons/addToMustWatch";
+import MyReviewIcon from "../components/cardIcons/myReview";
 
 export default {
-  title: "Home Page/MovieList",
+  title: "Lists/MovieList",
   component: MovieList,
   decorators: [
     (Story) => <MemoryRouter initialEntries={["/"]}>{Story()}</MemoryRouter>,
@@ -28,7 +30,15 @@ export const Basic = () => {
     <Grid container spacing={5}>
       <MovieList
         movies={movies}
-        action={(movie) => <AddToFavoritesIcon movie={movie} />}
+        action={(movie) => {
+          return (
+            <>
+              <AddToFavouritesIcon movie={movie} />
+              <AddToMustWatchIcon movie={movie} />
+              <MyReviewIcon movie={movie} />
+            </>
+          );
+        }}
       />
     </Grid>
   );
