@@ -57,7 +57,7 @@ function MovieListPageTemplate({ movies, title, action }) {
         return new Date(a.release_date) - new Date(b.release_date);
       } else if (sorting === 2) {
         return b.vote_average - a.vote_average;
-      } else if (sorting === 4) {
+      } else if (sorting === 3) {
         return a.vote_average - b.vote_average;
       } else {
         return new Date(b.release_date) - new Date(a.release_date);
