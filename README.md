@@ -107,12 +107,12 @@ Below is a list of all items that are cached
 
 ![][caching]
 
-[h1]: ./public/home.png
-[h2]: ./public/homeFiltered.png
-[m1]: ./public/mustWatch.png
-[r1]: ./public/myReviews.png
-[r2]: ./public/myReview.png
-[c1]: ./public/castInfo.png
-[s1]: ./public/similarMovies.png
+[h1]: ./public/home.PNG
+[h2]: ./public/homeFiltered.PNG
+[m1]: ./public/mustWatch.PNG
+[r1]: ./public/myReviews.PNG
+[r2]: ./public/myReview.PNG
+[c1]: ./public/castInfo.PNG
+[s1]: ./public/similarMovies.PNG
 [caching]: ./public/caching.png
 [stories]: ./public/stories.png
