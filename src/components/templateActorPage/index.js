@@ -25,7 +25,6 @@ const TemplateActorPage = ({ actor, children }) => {
     getActorImages
   );
 
-  console.log(data)
   if (isLoading) {
     return <Spinner />;
   }

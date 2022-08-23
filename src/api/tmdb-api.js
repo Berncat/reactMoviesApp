@@ -107,7 +107,6 @@ export const getCredits = (args) => {
 };
 
 export const getActor = (args) => {
-  console.log(args);
   const [, idPart] = args.queryKey;
   const { id } = idPart;
   return fetch(

@@ -28,9 +28,13 @@ function MovieListPageTemplate({ movies, title, action }) {
   const classes = useStyles();
   const [titleFilter, setTitleFilter] = useState("");
   const [genreFilter, setGenreFilter] = useState("0");
+  const [minRatingFilter, setMinRatingFilter] = useState("0");
+  const [maxRatingFilter, setMaxRatingFilter] = useState("10");
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const genreId = Number(genreFilter);
+  const minRating = minRatingFilter;
+  const maxRating = maxRatingFilter;
 
   let displayedMovies = movies
     .filter((m) => {
@@ -38,11 +42,24 @@ function MovieListPageTemplate({ movies, title, action }) {
     })
     .filter((m) => {
       return genreId > 0 ? m.genre_ids.includes(genreId) : true;
+    })
+    .filter((m) => {
+      return (
+        Number(m.vote_average) > minRating && Number(m.vote_average) < maxRating
+      );
     });
 
   const handleChange = (type, value) => {
-    if (type === "title") setTitleFilter(value);
-    else setGenreFilter(value);
+    if (type === "title") {
+      setTitleFilter(value);
+    } else if (type === "minRating") {
+      setMinRatingFilter(value);
+    } else if (type === "maxRating") {
+      setMaxRatingFilter(value);
+    } else {
+      setGenreFilter(value);
+      
+    }
   };
 
   return (
@@ -73,6 +90,8 @@ function MovieListPageTemplate({ movies, title, action }) {
           onUserInput={handleChange}
           titleFilter={titleFilter}
           genreFilter={genreFilter}
+          minRatingFilter={minRatingFilter}
+          maxRatingFilter={maxRatingFilter}
         />
       </Drawer>
     </>

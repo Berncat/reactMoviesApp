@@ -24,6 +24,11 @@ const useStyles = makeStyles((theme) => ({
     minWidth: 220,
     backgroundColor: "rgb(255, 255, 255)",
   },
+  rating: {
+    margin: theme.spacing(1),
+    minWidth: 100,
+    backgroundColor: "rgb(255, 255, 255)",
+  },
 }));
 
 export default function FilterMoviesCard(props) {
@@ -42,8 +47,11 @@ export default function FilterMoviesCard(props) {
     genres.unshift({ id: "0", name: "All" });
   }
 
+  const ratings = [0,1,2,3,4,5,6,7,8,9,10]
+
   const handleChange = (e, type, value) => {
     e.preventDefault();
+    console.log(type, value);
     props.onUserInput(type, value);
   };
 
@@ -53,6 +61,14 @@ export default function FilterMoviesCard(props) {
 
   const handleGenreChange = (e) => {
     handleChange(e, "genre", e.target.value);
+  };
+
+  const handleMinRatingChange = (e) => {
+    handleChange(e, "minRating", e.target.value);
+  };
+
+  const handleMaxRatingChange = (e) => {
+    handleChange(e, "maxRating", e.target.value);
   };
 
   return (
@@ -72,6 +88,8 @@ export default function FilterMoviesCard(props) {
             variant="filled"
             onChange={handleTextChange}
           />
+        </CardContent>
+        <CardContent>
           <FormControl className={classes.formControl}>
             <InputLabel id="genre-label">Genre</InputLabel>
             <Select
@@ -84,6 +102,42 @@ export default function FilterMoviesCard(props) {
                 return (
                   <MenuItem key={genre.id} value={genre.id}>
                     {genre.name}
+                  </MenuItem>
+                );
+              })}
+            </Select>
+          </FormControl>
+        </CardContent>
+        <CardContent>
+          <FormControl className={classes.rating}>
+            <InputLabel id="min-label">Min Rating</InputLabel>
+            <Select
+              labelId="min-label"
+              id="min-select"
+              value={props.minRatingFilter}
+              onChange={handleMinRatingChange}
+            >
+              {ratings.map((rating) => {
+                return (
+                  <MenuItem key={`min${rating} `} value={rating}>
+                    {rating}
+                  </MenuItem>
+                );
+              })}
+            </Select>
+          </FormControl>
+          <FormControl className={classes.rating}>
+            <InputLabel id="max-label">Max Rating</InputLabel>
+            <Select
+              labelId="max-label"
+              id="max-select"
+              value={props.maxRatingFilter}
+              onChange={handleMaxRatingChange}
+            >
+              {ratings.map((rating) => {
+                return (
+                  <MenuItem key={`max${rating}`} value={rating}>
+                    {rating}
                   </MenuItem>
                 );
               })}
